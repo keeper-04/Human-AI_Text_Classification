@@ -1,0 +1,9 @@
+Five misclassified examples (Challenge A, Baseline)
+
+1. epl499_9832047a4d6a248fa677 — true 0, predicted 1: Dense astronomy research abstract.
+2. epl499_1a7d0c39231b45c4ff6a — true 0, predicted 1: Formal encyclopedia-style organization history.
+3. epl499_380b7a31de3f471970a5 — true 0, predicted 1: Technical physics paper abstract.
+4. epl499_9582fb155ebbc2e84bd8 — true 1, predicted 0: Biographical encyclopedia entry.
+5. epl499_d241705bd8a6a97b8476 — true 1, predicted 0: Step-by-step carburetor repair instructions.
+
+Pattern: specialized or reference-like writing appears in both predicted classes.

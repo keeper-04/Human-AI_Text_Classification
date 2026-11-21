@@ -1,0 +1,98 @@
+Challenge A | Baseline
+              precision    recall  f1-score   support
+
+           0       0.78      0.71      0.74      1125
+           1       0.73      0.80      0.76      1125
+
+    accuracy                           0.75      2250
+   macro avg       0.75      0.75      0.75      2250
+weighted avg       0.75      0.75      0.75      2250
+
+
+Challenge A | Model 2
+              precision    recall  f1-score   support
+
+           0       0.86      0.83      0.85      1125
+           1       0.84      0.86      0.85      1125
+
+    accuracy                           0.85      2250
+   macro avg       0.85      0.85      0.85      2250
+weighted avg       0.85      0.85      0.85      2250
+
+
+Challenge A | Model 3
+              precision    recall  f1-score   support
+
+           0       0.86      0.86      0.86      1125
+           1       0.86      0.86      0.86      1125
+
+    accuracy                           0.86      2250
+   macro avg       0.86      0.86      0.86      2250
+weighted avg       0.86      0.86      0.86      2250
+
+
+Challenge B | Baseline
+              precision    recall  f1-score   support
+
+           0       0.68      0.83      0.75      1125
+           1       0.90      0.80      0.85      2250
+
+    accuracy                           0.81      3375
+   macro avg       0.79      0.82      0.80      3375
+weighted avg       0.83      0.81      0.82      3375
+
+
+Challenge B | Model 2
+              precision    recall  f1-score   support
+
+           0       0.96      0.94      0.95      1125
+           1       0.97      0.98      0.98      2250
+
+    accuracy                           0.97      3375
+   macro avg       0.97      0.96      0.96      3375
+weighted avg       0.97      0.97      0.97      3375
+
+
+Challenge B | Model 3
+              precision    recall  f1-score   support
+
+           0       0.97      0.91      0.94      1125
+           1       0.96      0.98      0.97      2250
+
+    accuracy                           0.96      3375
+   macro avg       0.96      0.95      0.95      3375
+weighted avg       0.96      0.96      0.96      3375
+
+
+Challenge C | Baseline
+              precision    recall  f1-score   support
+
+           0       0.69      0.75      0.72      1125
+           1       0.87      0.83      0.85      2250
+
+    accuracy                           0.81      3375
+   macro avg       0.78      0.79      0.79      3375
+weighted avg       0.81      0.81      0.81      3375
+
+
+Challenge C | Model 2
+              precision    recall  f1-score   support
+
+           0       0.82      0.81      0.82      1125
+           1       0.91      0.91      0.91      2250
+
+    accuracy                           0.88      3375
+   macro avg       0.86      0.86      0.86      3375
+weighted avg       0.88      0.88      0.88      3375
+
+
+Challenge C | Model 3
+              precision    recall  f1-score   support
+
+           0       0.88      0.76      0.82      1125
+           1       0.89      0.95      0.92      2250
+
+    accuracy                           0.89      3375
+   macro avg       0.88      0.85      0.87      3375
+weighted avg       0.89      0.89      0.88      3375
+
