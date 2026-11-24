@@ -1,9 +1,19 @@
 Five misclassified examples (Challenge A, Baseline)
 
-1. epl499_9832047a4d6a248fa677 — true 0, predicted 1: Dense astronomy research abstract.
-2. epl499_1a7d0c39231b45c4ff6a — true 0, predicted 1: Formal encyclopedia-style organization history.
-3. epl499_380b7a31de3f471970a5 — true 0, predicted 1: Technical physics paper abstract.
-4. epl499_9582fb155ebbc2e84bd8 — true 1, predicted 0: Biographical encyclopedia entry.
-5. epl499_d241705bd8a6a97b8476 — true 1, predicted 0: Step-by-step carburetor repair instructions.
+1. epl499_9832047a4d6a248fa677 — true 0, predicted 1: astronomy research abstract.
+   This text reports cluster observations in a formal scientific style: "measured the flux," "diffuse intracluster light," and "Careful attention in reduction and analysis." The Count BoW baseline is likely responding to the many formal and reporting words shared with the other class while not learning the document-level pattern that astronomy-specific terms indicate class 0. The repeated measurement and telescope terms are sparse, so the naive Bayes model can give more weight to generic scientific wording and assign class 1.
 
-Pattern: specialized or reference-like writing appears in both predicted classes.
+2. epl499_1a7d0c39231b45c4ff6a — true 0, predicted 1: formal encyclopedia-style organization history.
+   The text combines a descriptive opening ("OW2 is an independent non-profit international consortium"), a sectioned History/Activities structure, and a list of institutions and dates. A bag-of-words model loses paragraph structure and the distinction between a subject-specific fact page and ordinary reference prose. It can therefore overreact to common organization/reporting words such as "founded," "project," "activities," "members," and "hosting," while rare organization names such as "OW2," "ObjectWeb," and "OrientWare" do not provide a sufficiently strong class pattern.
+
+3. epl499_380b7a31de3f471970a5 — true 0, predicted 1: technical physics paper abstract.
+   This example is a compact technical summary with a goal ("hold promise"), a proposed mechanism ("band tilt induced nonlinear Nernst effect"), and results ("near-unity SP"). It resembles scientific writing, but the Count BoW representation drops word order and relationships such as "spin-momentum locking" and "nonlinear Nernst effect." Its distinctive abbreviations and research terms are likely too rare or not strongly associated with class 0 in training, allowing high-frequency abstract words to dominate the score.
+
+4. epl499_9582fb155ebbc2e84bd8 — true 1, predicted 0: biographical encyclopedia entry.
+   Unlike the previous two mistakes, this is a long, structured reference-style biography. It contains Life/Family/References sections and factual phrases such as "younger son of the Reverend," "educated at Westminster School," and "Bishop of Ferns and Leighlin." The model is exposed to many people and place names (Euseby Cleaver, Buckinghamshire, Ireland, Anglesey), but Count BoW ignores the biographical form and cannot generalize from rare proper nouns. It likely confuses the encyclopedic, factual wording with class 0 and misses the reliable cues that are lost among unique names and dates.
+
+5. epl499_d241705bd8a6a97b8476 — true 1, predicted 0: step-by-step carburetor and engine repair instructions.
+   This text has a clear imperative structure: "Line up," "Put the screw in," "Look for," "Make sure," and "Slide it in." It should provide strong procedural cues, but Count BoW treats "screw," "pin," "gap," "housing," and "crankshaft" as isolated tokens. Long technical repair vocabulary is sparse and highly specific to this domain, while generic imperative verbs occur in many kinds of text. Consequently, the sequence and the mechanical-mechanism context are lost, making the example look less like class 1 to the baseline.
+
+Shared pattern:
+The baseline is not primarily failing on obvious noise or random text. It misses because bag-of-words features discard sequence and document structure. Formal scientific and encyclopedic passages can overlap in specialist vocabulary and reporting style, while proper nouns, abbreviations, and imperative repair steps provide weak or isolated features. The same Count BoW limitation explains both kinds of disagreement: true-0 specialized texts are pulled toward class 1 by shared formal wording, while true-1 biographies and procedural instructions lose the structure and domain cues that distinguish them from class 0.
