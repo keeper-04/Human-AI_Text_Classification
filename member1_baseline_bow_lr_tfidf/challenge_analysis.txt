@@ -1,0 +1,56 @@
+Challenge A
+------------
+Highest macro-F1: Model 3 (TF-IDF + Logistic Regression), at 85.600 percentage points.
+Difference from Baseline: 10.540 percentage points (85.600 - 75.060).
+
+TF-IDF versus Count BoW:
+TF-IDF improves on Count BoW. Count BoW + Logistic Regression has macro-F1 84.752, while TF-IDF + Logistic Regression has 85.600, a gain of 0.848 percentage points.
+
+Per-class difficulty:
+No class is clearly harder for the best model. In the Model 3 report, classes 0 and 1 both have precision 0.86, recall 0.86, and F1 0.86. The baseline is slightly weaker on class 0 (F1 0.74 versus 0.76 for class 1), but the difference is small and the classes are balanced.
+
+Error/example evidence:
+The baseline makes 331 errors of true 0 predicted 1 and 229 errors of true 1 predicted 0. Its five-mistake summary shows astronomy and physics abstracts, encyclopedia-style organization history, a biography, and repair instructions. The five examples cross the two predicted categories, suggesting that specialized/reference-like wording overlaps substantially in this challenge. TF-IDF reduces the total error cases to 324 (161 false positives for class 0 and 163 false negatives), versus 343 for Count BoW, while keeping both classes symmetric.
+
+
+Challenge B
+----------
+Highest macro-F1: Model 2 (Count BoW + Logistic Regression), at 96.376 percentage points.
+Difference from Baseline: 16.549 percentage points (96.376 - 79.826).
+
+TF-IDF versus Count BoW:
+TF-IDF does not improve on Count BoW in this challenge. Count BoW macro-F1 is 96.376, whereas TF-IDF macro-F1 is 95.332, so TF-IDF ranks 1.044 percentage points lower. Thus the ranking changes here: Count BoW wins for B, while TF-IDF wins for A and C.
+
+Per-class difficulty:
+Class 0 is the harder class, especially at baseline: class 0 has precision 0.68, recall 0.83, and F1 0.75, compared with class 1 precision 0.90, recall 0.80, and F1 0.85. Both improved models handle class 0 much better, but class 0 remains slightly lower: Count BoW gives class 0 F1 0.95 versus 0.98 for class 1, and TF-IDF gives 0.94 versus 0.97.
+
+1:2 class balance and accuracy versus macro-F1:
+The test set has 1,125 class-0 examples and 2,250 class-1 examples, so class 1 is twice as common. Accuracy gives extra weight to success on class 1, while macro-F1 gives class 0 and class 1 equal weight. The baseline accuracy is 81.185 while macro-F1 is 79.826, a relatively small but visible inflation of about 1.36 percentage points. Count BoW's accuracy is 96.800 versus macro-F1 96.376. TF-IDF's accuracy is 95.911 versus macro-F1 95.332. Because class 0 has slightly lower scores even with the strong models, macro-F1 is lower than accuracy and is the more informative challenge result.
+
+Error/example evidence:
+The baseline makes 635 errors: 442 class-1 examples are missed as class 0, while 193 class-0 examples are predicted as class 1. It is therefore weakest on recall for the larger class at baseline, although class 0 is the weaker class in precision/F1. Count BoW reduces the errors to 108 (69 and 39), and TF-IDF to 138 (101 and 37). Representative baseline misses include conversational or plain-language advice about distance selling and a simplified explanation of World War II, where expected class-1 text can use ordinary, explanatory prose rather than distinctive technical vocabulary.
+
+
+Challenge C
+----------
+Highest macro-F1: Model 3 (TF-IDF + Logistic Regression), at 86.600 percentage points.
+Difference from Baseline: 7.937 percentage points (86.600 - 78.624).
+
+TF-IDF versus Count BoW:
+TF-IDF improves slightly on Count BoW. Count BoW macro-F1 is 86.272, while TF-IDF macro-F1 is 86.600, a gain of 0.327 percentage points.
+
+Per-class difficulty:
+Class 0 is the harder class. Baseline class-0 F1 is 0.72 versus 0.85 for class 1, and the gap persists in both strong models: Count BoW gives class-0 F1 0.82 and class-1 F1 0.91; TF-IDF gives 0.82 and 0.92. TF-IDF is particularly concentrated on class 1: it raises class-1 recall from 0.91 (Count BoW) to 0.95, but class-0 recall falls from 0.81 to 0.76. This improves overall macro-F1/F1 for class 1 while leaving class 0 more difficult.
+
+1:2 class balance and accuracy versus macro-F1:
+Challenge C also has 1,125 class-0 examples and 2,250 class-1 examples. Accuracy can be raised mainly by reliably finding the majority class 1, even while the minority class 0 remains weaker. The baseline accuracy is 80.593 while macro-F1 is 78.624, showing an accuracy advantage of about 1.97 percentage points. Count BoW has accuracy 87.822 and macro-F1 86.272. TF-IDF has accuracy 88.533 and macro-F1 86.600. Thus accuracy is consistently somewhat more optimistic, and macro-F1 is important for exposing the remaining class-0 weakness.
+
+Error/example evidence:
+The baseline makes 655 errors: 378 class-1 examples predicted 0 and 277 class-0 examples predicted 1. Count BoW reduces this to 411 (201 and 210), but TF-IDF reduces it further to 387. TF-IDF's remaining 387 errors are skewed: 272 are class-0 false positives to class 1, and 115 are class-1 false negatives to class 0. This matches the per-class report: class-0 recall is only 0.76. Representative baseline misses include true-class-1 personal or experiential prose (for example, a Seagoing Cowboy account and a first-person medical-school-anxiety account) predicted 0, and true-class-0 technical or policy prose (for example, an autoencoder paper summary and a driverless-cars discussion) predicted 1. These examples suggest mixed domains and mixed stylistic conventions make class boundaries less separable in C than in B.
+
+
+Small Summary
+-------------
+- TF-IDF wins A and C; Count BoW wins B.
+- All three challenges improve substantially over baseline macro-F1.
+- The minority class 0 is generally harder, so macro-F1 is preferable to accuracy for B and C.
