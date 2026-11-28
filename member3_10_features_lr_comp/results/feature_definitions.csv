@@ -1,0 +1,11 @@
+feature,group,definition
+avg_word_len,length,Mean letters per word
+stopword_ratio,lexical,Stopwords / words
+avg_sent_len,sentence,Mean words per sentence
+sent_len_std,sentence,Std. dev. of words per sentence (burstiness)
+comma_per_sent,punct,Commas per sentence
+digit_ratio,char,Digits / characters
+newline_ratio,format,Newline characters per 1000 characters
+avg_par_len,paragraph,Mean words per paragraph (paragraphs = non-empty lines split on newlines)
+contraction_ratio,style,Words containing an apostrophe / words
+pos_conj,pos,"Share of coordinating conjunctions (and, but, or; Penn tag CC) among POS-tagged tokens (first 400 words, NLTK perceptron tagger)"
